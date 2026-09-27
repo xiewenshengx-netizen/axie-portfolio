@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DKTON — 電影聲音設計 / 同期錄音 / 混音</title>
+<meta name="description" content="Dominik Kostolnik — 奧地利電影聲音設計師。同期錄音、聲音設計、5.1 混音，EBU R128 標準交付。">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Crect x='6' y='14' width='4' height='12' rx='2' fill='%23ffb800'/%3E%3Crect x='14' y='8' width='4' height='18' rx='2' fill='%23ffb800'/%3E%3Crect x='22' y='12' width='4' height='14' rx='2' fill='%23ffb800'/%3E%3C/svg%3E">
+<meta property="og:title" content="DKTON — 讓故事成為聲景">
+<meta property="og:description" content="電影聲音設計 / 同期錄音 / 混音">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/sections.css">
+<link rel="stylesheet" href="assets/css/works.css">
+<link rel="stylesheet" href="assets/css/stage.css">
+<link rel="stylesheet" href="assets/css/cloud.css">
+<link rel="stylesheet" href="assets/css/zoom.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ 0 · INTRO GATE ============ -->
+<div class="gate" role="dialog" aria-modal="true" aria-label="進入網站">
+  <div class="gate_inner">
+    <span class="bracket gate_label">Filmton &amp; Sounddesign — Linz / Wien</span>
+    <h1 class="display gate_name"><span>Dominik</span><span>Kostolnik</span></h1>
+    <p class="gate_copy">這個網站有聲音。所有聲音都是即時合成的，沒有預錄音檔。你可以選擇帶著聲音進來，或安靜地看。</p>
+    <div class="gate_actions">
+      <button class="btn is--primary" data-gate="sound" data-cursor="hover">
+        <i class="tick tl"></i><i class="tick tr"></i><i class="tick bl"></i><i class="tick br"></i>
+        Mit Ton eintreten
+      </button>
+      <button class="btn" data-gate="silent" data-cursor="hover">
+        <i class="tick tl"></i><i class="tick tr"></i><i class="tick bl"></i><i class="tick br"></i>
+        Ohne Ton fortfahren
+      </button>
+    </div>
+    <p class="gate_hint">ESC 跳過 · 音訊在首次互動後才載入</p>
+  </div>
+  <div class="gate_loader" aria-hidden="true"></div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" aria-label="主導航">
+  <a class="nav_logo" href="#hero" data-hover="回到頂端"><img class="nav_logo_img" src="assets/logo-axie.png" alt="AXIE" width="196" height="84"></a>
+  <div class="nav_links">
+    <a class="nav_link" href="#about"><span class="roll"><span class="roll_line">關於我</span><span class="roll_line is--ghost" aria-hidden="true">關於我</span></span></a>
+    <a class="nav_link" href="#leistungen"><span class="roll"><span class="roll_line">服務</span><span class="roll_line is--ghost" aria-hidden="true">服務</span></span></a>
+    <a class="nav_link" href="#projekte"><span class="roll"><span class="roll_line">作品</span><span class="roll_line is--ghost" aria-hidden="true">作品</span></span></a>
+    <a class="nav_link" href="#werke"><span class="roll"><span class="roll_line">影像庫</span><span class="roll_line is--ghost" aria-hidden="true">影像庫</span></span></a>
+    <a class="nav_link" href="#faq"><span class="roll"><span class="roll_line">常見問題</span><span class="roll_line is--ghost" aria-hidden="true">常見問題</span></span></a>
+  </div>
+  <div class="nav_meter" data-meter="5" aria-hidden="true"></div>
+</nav>
+
+<main>
+
+<!-- ============ 1 · HERO ============ -->
+<section class="hero" id="hero">
+  <video class="hero_bg" src="assets/works/video/wot-blitz-deadmau5.mp4" muted loop playsinline
+         preload="metadata" data-ambient tabindex="-1" aria-hidden="true"></video>
+  <div class="hero_veil" aria-hidden="true"></div>
+  <div class="hero_bars" role="group" aria-label="环境音效球：悬停或点击播放，移开即停">
+    <div class="hero_bar"><div class="hero_bar_fill"></div></div>
+    <div class="hero_bar"><div class="hero_bar_fill"></div></div>
+    <div class="hero_bar"><div class="hero_bar_fill"></div></div>
+    <div class="hero_bar"><div class="hero_bar_fill"></div></div>
+    <div class="hero_bar"><div class="hero_bar_fill"></div></div>
+    <div class="hero_bar"><div class="hero_bar_fill"></div></div>
+    <div class="hero_bar"><div class="hero_bar_fill"></div></div>
+  </div>
+  <div class="hero_glow" aria-hidden="true"></div>
+  <div class="hero_notes" aria-hidden="true"></div>
+
+  <div class="hero_inner shell">
+    <h1 class="hero_title h1">
+      <span class="line">让我们一起打造</span>
+      <span class="line">你的视频闪耀</span>
+    </h1>
+    <p class="hero_sub">
+      <span class="hero_sub_lead">创意视频制作公司</span>
+      <span class="hero_sub_body">我们专注于为各种类型产品打造创意理念和时尚产品</span>
+    </p>
+  </div>
+  <span class="hero_scroll">Scroll ↓</span>
+</section>
+
+<!-- ============ 2 · 關於我（逐詞點亮） ============ -->
+<section class="section" id="about">
+  <div class="shell">
+    <span class="bracket">über mich</span>
+    <div class="wave about_wave" data-wave="a" style="margin-top:2rem">
+      <p class="wave_p">
+        我在片場待了十年，做的是觀眾看不見的那一半。
+        <i data-window="0"></i>
+        同期收音時我關心一句台詞<span data-accent>在哪個房間</span>被說出來；
+      </p>
+      <figure class="about_fig is--right" data-zoom tabindex="0" role="button"
+              aria-label="現場一瞬 · 點擊放大檢視">
+        <img src="assets/works/img/shotdeck-06.jpg" alt="派對現場的人群" loading="lazy">
+        <span class="about_fig_ico" aria-hidden="true"></span>
+      </figure>
+      <p class="wave_p">
+        <i data-window="1"></i>
+        聲音設計時我關心它應該在什麼時候<span data-accent>不出現</span>。
+      </p>
+      <figure class="about_fig is--left" data-zoom tabindex="0" role="button"
+              aria-label="洗手台前的一瞬 · 點擊放大檢視">
+        <img src="assets/works/img/shotdeck-13.jpg" alt="水槽前的身影" loading="lazy">
+        <span class="about_fig_ico" aria-hidden="true"></span>
+      </figure>
+      <p class="wave_p">
+        <i data-window="2"></i>
+        最後一次混音，是把所有決定收斂成一個可以交付的檔案。
+        Das bedeutet: 好的聲音是隱形的，觀眾只記得畫面。
+        我拿著麥克風站在畫面外，把空間、距離與節奏錄下來。
+      </p>
+      <figure class="about_fig is--right" data-zoom tabindex="0" role="button"
+              aria-label="監視器前的剪影 · 點擊放大檢視">
+        <img src="assets/works/img/shotdeck-07.jpg" alt="綠色調的人物剪影" loading="lazy">
+        <span class="about_fig_ico" aria-hidden="true"></span>
+      </figure>
+    </div>
+    <div style="margin-top:3rem">
+      <a class="btn" href="#projekte" data-hover="看作品">
+        <i class="tick tl"></i><i class="tick tr"></i><i class="tick bl"></i><i class="tick br"></i>
+        看作品
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ 3 · 服務（調音台推子） ============ -->
+<section class="section" id="leistungen">
+  <div class="shell">
+    <span class="bracket">leistungen</span>
+    <h2 class="h2" style="margin:.8rem 0 3rem">三條通道 · 推起來聽聽看</h2>
+
+    <div class="faders">
+      <div class="fader" data-fader data-kind="0">
+        <div class="fader_head">
+          <span class="bracket">CH 01</span>
+          <span class="fader_index mono">ORIGINALTON</span>
+        </div>
+        <div class="fader_track" data-hover="拖動我">
+          <div class="fader_band"></div>
+          <div class="fader_scale" aria-hidden="true"></div>
+          <div class="fader_title" data-title="ORIGINALTON · 同期錄音 · SET-TON · BOOM · LAVALIER · "></div>
+          <div class="fader_cap" aria-hidden="true"><b></b><u>-∞ dB</u></div>
+        </div>
+        <div class="fader_foot"><span>同期錄音</span><span>雙系統 · Timecode 對齊</span></div>
+      </div>
+
+      <div class="fader" data-fader data-kind="1">
+        <div class="fader_head">
+          <span class="bracket">CH 02</span>
+          <span class="fader_index mono">SOUNDDESIGN</span>
+        </div>
+        <div class="fader_track" data-hover="拖動我">
+          <div class="fader_band"></div>
+          <div class="fader_scale" aria-hidden="true"></div>
+          <div class="fader_title" data-title="SOUNDDESIGN · 聲音設計 · FOLEY · AMBIENCE · 擬音 · "></div>
+          <div class="fader_cap" aria-hidden="true"><b></b><u>-∞ dB</u></div>
+        </div>
+        <div class="fader_foot"><span>聲音設計</span><span>自採素材庫 · 授權乾淨</span></div>
+      </div>
+
+      <div class="fader" data-fader data-kind="2">
+        <div class="fader_head">
+          <span class="bracket">CH 03</span>
+          <span class="fader_index mono">MISCHUNG</span>
+        </div>
+        <div class="fader_track" data-hover="拖動我">
+          <div class="fader_band"></div>
+          <div class="fader_scale" aria-hidden="true"></div>
+          <div class="fader_title" data-title="MISCHUNG · 混音 · 5.1 · M&amp;E · EBU R128 · 母帶 · "></div>
+          <div class="fader_cap" aria-hidden="true"><b></b><u>-∞ dB</u></div>
+        </div>
+        <div class="fader_foot"><span>混音</span><span>5.1 / Stereo / 國際聲軌</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · PEGEL 電平柱 ============ -->
+<section class="pegel" data-pegel id="showreel" aria-label="Showreel">
+  <div class="pegel_stage">
+    <svg class="pegel_svg" aria-hidden="true"></svg>
+    <div class="pegel_video" data-hover="播放 SHOWREEL">
+      <video src="assets/works/video/porsche-wild-force.mp4" muted loop playsinline
+             preload="metadata" data-ambient></video>
+    </div>
+    <div class="pegel_hud">
+      <div>
+        <span class="bracket">pegel</span>
+        <p class="h3" style="margin:.5rem 0 0">Showreel 2026<br>02:14 · 5.1</p>
+      </div>
+      <button class="btn pegel_cta" data-cursor="hover" data-hover="按這裡也行">
+        <i class="tick tl"></i><i class="tick tr"></i><i class="tick bl"></i><i class="tick br"></i>
+        播放 Showreel
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 · 作品 ============ -->
+<section class="section proj" id="projekte">
+  <div class="shell">
+    <span class="bracket">projekte</span>
+    <h2 class="h2" style="margin:.8rem 0 3rem">近作</h2>
+
+    <article class="proj_card" data-playable role="button" tabindex="0">
+      <div class="proj_media" data-stage="" data-cursor="hover" data-hover="點擊播放" tabindex="0" role="button" aria-label="播放 Der Stillste Ort">
+        <video src="assets/works/video/dior-glitter.mp4" muted loop playsinline preload="metadata" data-ambient></video>
+        <span class="proj_edge" aria-hidden="true"></span>
+        <span class="proj_play" aria-hidden="true"><i></i></span>
+      </div>
+      <div class="proj_body">
+        <h3 class="proj_title" data-split>DER STILLSTE ORT</h3>
+        <div class="proj_row"><span>Regie</span><span>M. Hofer</span><span class="dkr-peak"></span></div>
+        <div class="proj_row"><span>Format</span><span>Spielfilm · 96 min</span><span class="dkr-peak"></span></div>
+        <div class="proj_row"><span>Ton</span><span>Dominik Kostolnik</span><span class="dkr-peak"></span></div>
+        <div class="proj_row"><span>Kunde</span><span>Land Oberösterreich</span><span class="dkr-peak"></span></div>
+      </div>
+    </article>
+
+    <article class="proj_card" data-playable role="button" tabindex="0">
+      <div class="proj_media" data-stage="" data-cursor="hover" data-hover="點擊播放" tabindex="0" role="button" aria-label="播放 Nachtschicht">
+        <video src="assets/works/video/lillians-magic-time.mp4" muted loop playsinline preload="metadata" data-ambient></video>
+        <span class="proj_edge" aria-hidden="true"></span>
+        <span class="proj_play" aria-hidden="true"><i></i></span>
+      </div>
+      <div class="proj_body">
+        <h3 class="proj_title" data-split>NACHTSCHICHT</h3>
+        <div class="proj_row"><span>Regie</span><span>S. Berger</span><span class="dkr-peak"></span></div>
+        <div class="proj_row"><span>Format</span><span>Doku · 52 min</span><span class="dkr-peak"></span></div>
+        <div class="proj_row"><span>SOUNDDESIGN</span><span>Dominik Kostolnik</span><span class="dkr-peak"></span></div>
+        <div class="proj_row"><span>Kunde</span><span>ORF III</span><span class="dkr-peak"></span></div>
+      </div>
+    </article>
+
+    <article class="proj_card" data-playable role="button" tabindex="0">
+      <div class="proj_media" data-stage="" data-cursor="hover" data-hover="點擊播放" tabindex="0" role="button" aria-label="播放 Alpen Tactile">
+        <video src="assets/works/video/tmall-618.mp4" muted loop playsinline preload="metadata" data-ambient></video>
+        <span class="proj_edge" aria-hidden="true"></span>
+        <span class="proj_play" aria-hidden="true"><i></i></span>
+      </div>
+      <div class="proj_body">
+        <h3 class="proj_title" data-split>ALPEN TACTILE</h3>
+        <div class="proj_row"><span>Agentur</span><span>Studio Nord</span><span class="dkr-peak"></span></div>
+        <div class="proj_row"><span>Format</span><span>Werbespot · 45 s</span><span class="dkr-peak"></span></div>
+        <div class="proj_row"><span>Mischung</span><span>Dominik Kostolnik</span><span class="dkr-peak"></span></div>
+        <div class="proj_row"><span>Kunde</span><span>Tourismusverband Linz</span><span class="dkr-peak"></span></div>
+      </div>
+    </article>
+
+    <div class="plist">
+      <div class="plist_item" data-fc="#ffb800"><span class="n">01</span><span class="t">Der Stillste Ort</span><span class="y">2026 · Spielfilm</span></div>
+      <div class="plist_item" data-fc="#a67eff"><span class="n">02</span><span class="t">Nachtschicht</span><span class="y">2025 · Doku</span></div>
+      <div class="plist_item" data-fc="#ff4337"><span class="n">03</span><span class="t">Alpen Tactile</span><span class="y">2025 · Werbung</span></div>
+      <div class="plist_item" data-fc="#ffb800"><span class="n">04</span><span class="t">Holz &amp; Zeit</span><span class="y">2025 · Image</span></div>
+      <div class="plist_item" data-fc="#a67eff"><span class="n">05</span><span class="t">Die Letzte Fahrt</span><span class="y">2024 · Kurzfilm</span></div>
+      <div class="plist_item" data-fc="#ff4337"><span class="n">06</span><span class="t">Stadt. Land. Ton.</span><span class="y">2024 · Doku</span></div>
+      <div class="plist_item" data-fc="#ffb800"><span class="n">07</span><span class="t">Kaltfront</span><span class="y">2023 · Serie</span></div>
+      <div class="plist_item" data-fc="#a67eff"><span class="n">08</span><span class="t">Werkstatt Ost</span><span class="y">2023 · Image</span></div>
+      <div class="plist_item" data-fc="#ff4337"><span class="n">09</span><span class="t">Zwischen den Takten</span><span class="y">2022 · Konzert</span></div>
+      <div class="plist_item" data-fc="#ffb800"><span class="n">10</span><span class="t">Erste Schicht</span><span class="y">2022 · Kurzfilm</span></div>
+    </div>
+    <div class="plist_prev" aria-hidden="true"><video src="assets/works/video/kuaike-elevator.mp4" muted loop playsinline preload="metadata" data-ambient></video></div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============ 5.5 · 影像库（视频 / 图片分区） ============ -->
+<section class="section" id="werke" aria-label="影像库">
+  <div class="shell">
+    <span class="bracket">galerie</span>
+    <h2 class="h2" style="margin:.8rem 0 .4rem">影像庫</h2>
+    <p style="margin:0 0 .6rem;color:rgba(255,255,255,.55);max-width:56ch;font-size:.95rem;line-height:1.7">
+      影像作品與鏡頭靜幀分兩區陳列——點擊圖片可進入燈箱瀏覽，點擊視頻卡可使用放大器帶聲播放。
+    </p>
+
+    <nav class="works_tabs" aria-label="影像庫分區">
+      <a class="works_tab is--active" href="#werke-video">視頻作品 <span style="opacity:.6">12</span></a>
+      <a class="works_tab" href="#werke-stills">圖片作品 <span style="opacity:.6">12</span></a>
+    </nav>
+
+    <!-- —— 视频作品 —— -->
+    <div class="works_group" id="werke-video">
+      <div class="works_head">
+        <h3>視頻作品</h3>
+        <span class="count">VIDEO × 12</span>
+        <span class="hint">點擊卡片進入播放器 · 帶聲播放 · ← → 切換</span>
+      </div>
+      <div class="works_videos">
+
+        <article class="vcard" data-playable role="button" tabindex="0">
+          <div class="vcard_media"><video class="vcard_video" src="assets/works/video/dior-glitter.mp4" muted loop playsinline preload="metadata"></video><span class="vcard_play" aria-hidden="true"><i></i></span><span class="vcard_dur"></span></div>
+          <div class="vcard_meta">
+            <span class="vcard_idx">V·01</span>
+            <span class="vcard_title">DIOR — GLITTER</span>
+            <span class="vcard_tag">時尚廣告</span>
+          </div>
+        </article>
+
+        <article class="vcard" data-playable role="button" tabindex="0">
+          <div class="vcard_media"><video class="vcard_video" src="assets/works/video/porsche-wild-force.mp4" muted loop playsinline preload="metadata"></video><span class="vcard_play" aria-hidden="true"><i></i></span><span class="vcard_dur"></span></div>
+          <div class="vcard_meta">
+            <span class="vcard_idx">V·02</span>
+            <span class="vcard_title">PORSCHE — WILD FORCE</span>
+            <span class="vcard_tag">品牌片</span>
+          </div>
+        </article>
+
+        <article class="vcard" data-playable role="button" tabindex="0">
+          <div class="vcard_media"><video class="vcard_video" src="assets/works/video/lillians-magic-time.mp4" muted loop playsinline preload="metadata"></video><span class="vcard_play" aria-hidden="true"><i></i></span><span class="vcard_dur"></span></div>
+          <div class="vcard_meta">
+            <span class="vcard_idx">V·03</span>
+            <span class="vcard_title">Lillian's Magic Time</span>
+            <span class="vcard_tag">廣告片</span>
+          </div>
+        </article>
+
+        <article class="vcard" data-playable role="button" tabindex="0">
+          <div class="vcard_media"><video class="vcard_video" src="assets/works/video/lenovo-yoga-air-x.mp4" muted loop playsinline preload="metadata"></video><span class="vcard_play" aria-hidden="true"><i></i></span><span class="vcard_dur"></span></div>
+          <div class="vcard_meta">
+            <span class="vcard_idx">V·04</span>
+            <span class="vcard_title">聯想 YOGA Air X — 顏值與實力並存</span>
+            <span class="vcard_tag">數碼廣告</span>
+          </div>
+        </article>
+
+        <article class="vcard" data-playable role="button" tabindex="0">
+          <div class="vcard_media"><video class="vcard_video" src="assets/works/video/wessen-acid-project.mp4" muted loop playsinline preload="metadata"></video><span class="vcard_play" aria-hidden="true"><i></i></span><span class="vcard_dur"></span></div>
+          <div class="vcard_meta">
+            <span class="vcard_idx">V·05</span>
+            <span class="vcard_title">위쎈 위산 프로젝트 with 오나라</span>
+            <span class="vcard_tag">品牌影片</span>
+          </div>
+        </article>
+
+        <article class="vcard" data-playable role="button" tabindex="0">
+          <div class="vcard_media"><video class="vcard_video" src="assets/works/video/banda-daijia.mp4" muted loop playsinline preload="metadata"></video><span class="vcard_play" aria-hidden="true"><i></i></span><span class="vcard_dur"></span></div>
+          <div class="vcard_meta">
+            <span class="vcard_idx">V·06</span>
+            <span class="vcard_title">半打 · 安代駕 魔性廣告</span>
+            <span class="vcard_tag">生活服務</span>
+          </div>
+        </article>
+
+        <article class="vcard" data-playable role="button" tabindex="0">
+          <div class="vcard_media"><video class="vcard_video" src="assets/works/video/guilin-xiguashuang-tvc.mp4" muted loop playsinline preload="metadata"></video><span class="vcard_play" aria-hidden="true"><i></i></span><span class="vcard_dur"></span></div>
+          <div class="vcard_meta">
+            <span class="vcard_idx">V·07</span>
+            <span class="vcard_title">桂林西瓜霜 · 含片清咽喉 TVC</span>
+            <span class="vcard_tag">醫療保健</span>
+          </div>
+        </article>
+
+        <article class="vcard" data-playable role="button" tabindex="0">
+          <div class="vcard_media"><video class="vcard_video" src="assets/works/video/kuaike-elevator.mp4" muted loop playsinline preload="metadata"></video><span class="vcard_play" aria-hidden="true"><i></i></span><span class="vcard_dur"></span></div>
+          <div class="vcard_meta">
+            <span class="vcard_idx">V·08</span>
+            <span class="vcard_title">快克感冒藥 · 魔性分眾電梯廣告</span>
+            <span class="vcard_tag">醫療保健</span>
+          </div>
+        </article>
+
+        <article class="vcard" data-playable role="button" tabindex="0">
+          <div class="vcard_media"><video class="vcard_video" src="assets/works/video/guilin-pen-pen.mp4" muted loop playsinline preload="metadata"></video><span class="vcard_play" aria-hidden="true"><i></i></span><span class="vcard_dur"></span></div>
+          <div class="vcard_meta">
+            <span class="vcard_idx">V·09</span>
+            <span class="vcard_title">噴噴噴噴噴桂林西瓜霜！！</span>
+            <span class="vcard_tag">醫療保健</span>
+          </div>
+        </article>
+
+        <article class="vcard" data-playable role="button" tabindex="0">
+          <div class="vcard_media"><video class="vcard_video" src="assets/works/video/video-execution.mp4" muted loop playsinline preload="metadata"></video><span class="vcard_play" aria-hidden="true"><i></i></span><span class="vcard_dur"></span></div>
+          <div class="vcard_meta">
+            <span class="vcard_idx">V·10</span>
+            <span class="vcard_title">Video Execution — 影像執行</span>
+            <span class="vcard_tag">綜合</span>
+          </div>
+        </article>
+
+        <article class="vcard" data-playable role="button" tabindex="0">
+          <div class="vcard_media"><video class="vcard_video" src="assets/works/video/tmall-618.mp4" muted loop playsinline preload="metadata"></video><span class="vcard_play" aria-hidden="true"><i></i></span><span class="vcard_dur"></span></div>
+          <div class="vcard_meta">
+            <span class="vcard_idx">V·11</span>
+            <span class="vcard_title">天貓618 · bububububu得了</span>
+            <span class="vcard_tag">電商大促</span>
+          </div>
+        </article>
+
+        <article class="vcard" data-playable role="button" tabindex="0">
+          <div class="vcard_media"><video class="vcard_video" src="assets/works/video/tylenol-jp.mp4" muted loop playsinline preload="metadata"></video><span class="vcard_play" aria-hidden="true"><i></i></span><span class="vcard_dur"></span></div>
+          <div class="vcard_meta">
+            <span class="vcard_idx">V·12</span>
+            <span class="vcard_title">TYLENOL タイレノール（JNTL）</span>
+            <span class="vcard_tag">醫療保健</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- —— 图片作品 —— -->
+    <div class="works_group" id="werke-stills">
+      <div class="works_head">
+        <h3>圖片作品</h3>
+        <span class="count">STILLS × 12</span>
+        <span class="hint">點擊進入燈箱 · ← → 翻頁 · ESC 關閉</span>
+      </div>
+      <div class="works_gallery">
+
+        <figure class="gitem"><img src="assets/works/img/shot-25.jpg" alt="鏡頭靜幀 25" loading="lazy"><span class="gitem_ico">＋</span><figcaption class="gitem_cap">STILL · 25 — 貓與報刊亭</figcaption></figure>
+        <figure class="gitem"><img src="assets/works/img/shot-26.jpg" alt="鏡頭靜幀 26" loading="lazy"><span class="gitem_ico">＋</span><figcaption class="gitem_cap">STILL · 26 — 暮色海岸群像</figcaption></figure>
+        <figure class="gitem"><img src="assets/works/img/shot-27.jpg" alt="鏡頭靜幀 27" loading="lazy"><span class="gitem_ico">＋</span><figcaption class="gitem_cap">STILL · 27 — 新聞演播室</figcaption></figure>
+        <figure class="gitem"><img src="assets/works/img/shot-28.jpg" alt="鏡頭靜幀 28" loading="lazy"><span class="gitem_ico">＋</span><figcaption class="gitem_cap">STILL · 28 — GNN 新聞警報</figcaption></figure>
+        <figure class="gitem"><img src="assets/works/img/shot-29.jpg" alt="鏡頭靜幀 29" loading="lazy"><span class="gitem_ico">＋</span><figcaption class="gitem_cap">STILL · 29 — 藍幕攝影棚</figcaption></figure>
+        <figure class="gitem"><img src="assets/works/img/shot-30.jpg" alt="鏡頭靜幀 30" loading="lazy"><span class="gitem_ico">＋</span><figcaption class="gitem_cap">STILL · 30 — 霓虹肖像</figcaption></figure>
+        <figure class="gitem"><img src="assets/works/img/shot-31.jpg" alt="鏡頭靜幀 31" loading="lazy"><span class="gitem_ico">＋</span><figcaption class="gitem_cap">STILL · 31 — 燭光老人</figcaption></figure>
+        <figure class="gitem"><img src="assets/works/img/shot-32.jpg" alt="鏡頭靜幀 32" loading="lazy"><span class="gitem_ico">＋</span><figcaption class="gitem_cap">STILL · 32 — 車窗男孩</figcaption></figure>
+        <figure class="gitem"><img src="assets/works/img/shot-33.jpg" alt="鏡頭靜幀 33" loading="lazy"><span class="gitem_ico">＋</span><figcaption class="gitem_cap">STILL · 33 — 城市仰角</figcaption></figure>
+        <figure class="gitem"><img src="assets/works/img/shot-34.jpg" alt="鏡頭靜幀 34" loading="lazy"><span class="gitem_ico">＋</span><figcaption class="gitem_cap">STILL · 34 — 藍調房間</figcaption></figure>
+        <figure class="gitem"><img src="assets/works/img/shot-35.jpg" alt="鏡頭靜幀 35" loading="lazy"><span class="gitem_ico">＋</span><figcaption class="gitem_cap">STILL · 35 — 老車少年</figcaption></figure>
+        <figure class="gitem"><img src="assets/works/img/shot-36.jpg" alt="鏡頭靜幀 36" loading="lazy"><span class="gitem_ico">＋</span><figcaption class="gitem_cap">STILL · 36 — 紗布面具與吐司</figcaption></figure>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 图片灯箱 -->
+<div class="glightbox" role="dialog" aria-modal="true" aria-label="圖片燈箱">
+  <button class="glightbox_nav is--prev" aria-label="上一張"></button>
+  <button class="glightbox_nav is--next" aria-label="下一張"></button>
+  <div class="glightbox_stage">
+    <img src="" alt="">
+  </div>
+  <div class="glightbox_bar">
+    <button class="glightbox_btn" data-glb-prev>← 上一張</button>
+    <span data-glb-idx>01 / 12</span>
+    <span data-glb-cap>STILL</span>
+    <button class="glightbox_btn" data-glb-next>下一張 →</button>
+    <button class="glightbox_btn glightbox_close">關閉 ESC</button>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ============ 6 · FAQ ============ -->
+<section class="section" id="faq">
+  <div class="shell">
+    <span class="bracket">faq</span>
+    <h2 class="h2" style="margin:.8rem 0 3rem">常見問題</h2>
+    <div class="faq">
+      <div class="faq_item">
+        <button class="faq_q" data-hover="展開">
+          <span class="t">為什麼要另外付費做聲音設計？</span>
+          <span class="faq_sign" aria-hidden="true"></span>
+          <span class="faq_meter" data-meter="4" aria-hidden="true"></span>
+        </button>
+        <div class="faq_a"><div><p>同期錄音只能拿到現場真實發生的聲音。畫面剪完之後，常常需要補上不存在的空間、腳步與環境層。這一段是額外的工作，也是預算裡最容易被砍、砍完最容易被看出來的一段。</p></div></div>
+      </div>
+      <div class="faq_item">
+        <button class="faq_q" data-hover="展開">
+          <span class="t">可以只做混音嗎？</span>
+          <span class="faq_sign" aria-hidden="true"></span>
+          <span class="faq_meter" data-meter="4" aria-hidden="true"></span>
+        </button>
+        <div class="faq_a"><div><p>可以。把 OMF/AAF 與參考影片給我，我按 EBU R128 交付 −23 LUFS 的立體聲與 5.1 母帶，附 M&amp;E 國際聲軌。前提是素材本身乾淨——如果現場收音有問題，我會先告訴你哪一段救不回來。</p></div></div>
+      </div>
+      <div class="faq_item">
+        <button class="faq_q" data-hover="展開">
+          <span class="t">外縣市或國外的案子接嗎？</span>
+          <span class="faq_sign" aria-hidden="true"></span>
+          <span class="faq_meter" data-meter="4" aria-hidden="true"></span>
+        </button>
+        <div class="faq_a"><div><p>接。差旅另計，混音與聲音設計的部分可以遠端完成，只需要在交付前做一次線上審片。時區不是問題，檔案傳輸用加密連結。</p></div></div>
+      </div>
+      <div class="faq_item">
+        <button class="faq_q" data-hover="展開">
+          <span class="t">版權與素材授權怎麼處理？</span>
+          <span class="faq_sign" aria-hidden="true"></span>
+          <span class="faq_meter" data-meter="4" aria-hidden="true"></span>
+        </button>
+        <div class="faq_a"><div><p>我用自己的素材庫，授權乾淨、可追溯，交付時會附一份來源清單。需要使用第三方素材庫時會先報價並取得你的書面同意——這是唯一會讓後期卡住的地方，早點說清楚最省事。</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 · INSTAGRAM 拼貼 ============ -->
+<section class="section" id="insta">
+  <div class="shell">
+    <span class="bracket">was gibt's auf insta?</span>
+    <h2 class="h2" style="margin:.8rem 0 2rem">片場與工作室</h2>
+    <div class="collage">
+      <div class="collage_item" data-hover="片場"><img src="assets/works/img/shot-25.jpg" alt="片場工作照" loading="lazy"></div>
+      <div class="collage_item" data-hover="麥克風"><img src="assets/works/img/shot-26.jpg" alt="麥克風特寫" loading="lazy"></div>
+      <div class="collage_item" data-hover="調音台"><img src="assets/works/img/shot-27.jpg" alt="調音台" loading="lazy"></div>
+      <div class="collage_item" data-hover="線材"><img src="assets/works/img/shot-28.jpg" alt="線材收納" loading="lazy"></div>
+      <div class="collage_item" data-hover="監聽"><img src="assets/works/img/shot-29.jpg" alt="監聽設備" loading="lazy"></div>
+      <div class="collage_item" data-hover="外景"><img src="assets/works/img/shot-30.jpg" alt="外景拍攝" loading="lazy"></div>
+      <div class="collage_item" data-hover="波形"><img src="assets/works/img/shot-31.jpg" alt="波形畫面" loading="lazy"></div>
+      <div class="collage_item" data-hover="深夜"><img src="assets/works/img/shot-32.jpg" alt="深夜工作室" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ 7.5 · 雲端留言（guest_messages） ============ -->
+<section class="section" id="kontakt">
+  <div class="shell">
+    <span class="bracket">sag etwas</span>
+    <h2 class="h2" style="margin:.8rem 0 .4rem">說點什麼</h2>
+    <p style="margin:0 0 .2rem;color:rgba(255,255,255,.55);max-width:56ch;font-size:.95rem;line-height:1.7">
+      案子洽談、素材交付或單純想聊聊聲音都可以寫在這裡，留言會存進雲端，不會丟。也可以直接來信 hallo@dkton.at。
+    </p>
+
+    <form class="msgform" novalidate>
+      <label class="msgfield">
+        <span>稱呼 / 項目</span>
+        <input type="text" name="name" maxlength="40" autocomplete="name" placeholder="例如：Studio Nord · Nordlicht">
+      </label>
+      <label class="msgfield">
+        <span>聯絡方式（選填）</span>
+        <input type="text" name="contact" maxlength="120" autocomplete="email" placeholder="Email 或電話">
+      </label>
+      <label class="msgfield is--wide">
+        <span>想說的話</span>
+        <textarea name="content" rows="4" maxlength="800" required placeholder="片長、交付格式、時程，或任何你想先說清楚的事。"></textarea>
+      </label>
+      <div class="msgrow">
+        <button class="btn is--primary" type="submit" data-cursor="hover">
+          <i class="tick tl"></i><i class="tick tr"></i><i class="tick bl"></i><i class="tick br"></i>
+          送出留言
+        </button>
+        <span class="msgstatus" data-msg-status role="status" aria-live="polite"></span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ 8 · FOOTER ============ -->
+<footer class="footer">
+  <div class="shell">
+    <span class="bracket">footer — streichinstrument</span>
+    <div class="footer_strings" data-strings aria-hidden="true"></div>
+
+    <div class="footer_grid">
+      <div class="footer_col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:hallo@dkton.at" data-hover="寫信">hallo@dkton.at</a></li>
+          <li><a href="tel:+436641234567" data-hover="打電話">+43 664 123 45 67</a></li>
+          <li>Linz / Wien, Österreich</li>
+        </ul>
+      </div>
+      <div class="footer_col">
+        <h4>Leistungen</h4>
+        <ul>
+          <li>Originalton</li>
+          <li>Sounddesign</li>
+          <li>Mischung 5.1</li>
+          <li>M&amp;E-Mischung</li>
+        </ul>
+      </div>
+      <div class="footer_col">
+        <h4>Technik</h4>
+        <ul>
+          <li>EBU R128 · −23 LUFS</li>
+          <li>Timecode · 雙系統</li>
+          <li>Pro Tools Ultimate</li>
+          <li>5.1 Monitoring</li>
+        </ul>
+      </div>
+      <div class="footer_col">
+        <h4>Social</h4>
+        <ul>
+          <li><a href="#" data-hover="外部連結">Instagram</a></li>
+          <li><a href="#" data-hover="外部連結">Vimeo</a></li>
+          <li><a href="#" data-hover="外部連結">IMDb</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer_wordmark" aria-hidden="true"><span data-fit>DKTON</span></div>
+
+  <div class="shell">
+    <div class="footer_legal">
+      <span>© 2026 Dominik Kostolnik</span>
+      <span>Impressum · Datenschutz</span>
+      <span>Made in Oberösterreich</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ 作品播放器（点击任意视频案例进入，带声） ============ -->
+<div class="videobox" hidden role="dialog" aria-modal="true" aria-label="作品播放器">
+  <div class="videobox_frame">
+    <div class="videobox_stage">
+      <video class="videobox_vid" controls playsinline preload="metadata"></video>
+    </div>
+    <div class="videobox_bar">
+      <span class="videobox_idx"></span>
+      <span class="videobox_title"></span>
+      <span class="videobox_hint">← → 切换 · 拖拽画面可旋转甩出 · ESC 关闭</span>
+      <button class="videobox_btn" data-vb-prev aria-label="上一支">◀</button>
+      <button class="videobox_btn" data-vb-next aria-label="下一支">▶</button>
+      <button class="videobox_btn is--close" data-vb-close>關閉 ESC</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Showreel Lightbox ============ -->
+<div class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Showreel">
+  <div class="lightbox_frame">
+    <div class="lightbox_stage">
+      <video class="lightbox_vid" src="assets/works/video/porsche-wild-force.mp4"
+             controls playsinline preload="metadata"></video>
+    </div>
+    <div class="lightbox_bar">
+      <span>Showreel 2026 · 02:14</span>
+      <span>—</span>
+      <button class="btn lightbox_close" data-lightbox-close="1" data-cursor="hover">關閉 ESC</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Hover 膠囊 ============ -->
+<div class="pill" aria-hidden="true"><span class="pill_stack"><span></span><span class="is--ghost"></span></span></div>
+<div class="pill_ghost" aria-hidden="true"></div>
+
+<script src="assets/js/core.js"></script>
+<script src="assets/js/cursor.js"></script>
+<script src="assets/js/modules-1.js"></script>
+<script src="assets/js/modules-2.js"></script>
+<script src="assets/js/modules-3.js"></script>
+<script src="assets/js/works.js"></script>
+<script src="assets/js/stage.js"></script>
+<!-- 雲端服務 SDK（CDN，無構建步驟）；雲端功能就緒後由 cloud.js 接管 -->
+<script src="https://cdn.jsdelivr.net/npm/@tencent-ai/workbuddy-cloud-sdk@dev/lib/index.global.js"></script>
+<script src="assets/js/cloud.js"></script>
+<script src="assets/js/zoom.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
