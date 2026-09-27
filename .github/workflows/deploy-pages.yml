@@ -24,6 +24,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 该视频 58.9MB，超过 GitHub REST API 的单文件处理上限，无法随仓库提交，
+      # 因此在构建阶段从源站补齐（内容与原站完全一致）。若源站不可达则跳过，
+      # 站点其余部分仍正常部署。
+      - name: Fetch oversized asset (dior-glitter.mp4)
+        run: |
+          mkdir -p assets/works/video
+          curl -sSL --retry 3 --max-time 600 \
+            https://axie-portfolio.app.workbuddy.host/assets/works/video/dior-glitter.mp4 \
+            -o assets/works/video/dior-glitter.mp4
+          size=$(stat -c%s assets/works/video/dior-glitter.mp4 2>/dev/null || echo 0)
+          echo "downloaded bytes: $size"
+          if [ "$size" -lt 1000000 ]; then
+            echo "下载不完整，移除该文件以免发布损坏资源"
+            rm -f assets/works/video/dior-glitter.mp4
+          fi
+        continue-on-error: true
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
