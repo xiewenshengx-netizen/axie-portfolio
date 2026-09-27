@@ -1,0 +1,294 @@
+/* ============================================================
+   works.css — 作品库（#werke）
+   分区：视频作品 .works-videos / 图片作品 .works-gallery
+   设计语言沿用 tokens：暗底、琥珀 #ffb800、细线分隔
+   ============================================================ */
+
+#werke { padding-bottom: clamp(4rem, 10vh, 9rem); }
+
+/* ---- 分区切换（锚点标签，纯 CSS 滚动定位） ---- */
+.works_tabs {
+  display: flex; gap: .6rem; flex-wrap: wrap;
+  margin: 1.6rem 0 2.6rem;
+}
+.works_tab {
+  font: 500 12px/1 'JetBrains Mono', monospace;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  text-decoration: none;
+  padding: .7rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  transition: color .3s, border-color .3s, background .3s;
+}
+.works_tab:hover { color: #fff; border-color: var(--accent-line); }
+.works_tab.is--active {
+  color: #150e00;
+  background: var(--brand-500);
+  border-color: var(--brand-500);
+}
+
+.works_group { margin-bottom: clamp(3.5rem, 8vh, 6rem); scroll-margin-top: 110px; }
+.works_head {
+  display: flex; align-items: baseline; gap: 1rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: .9rem; margin-bottom: 1.8rem;
+}
+.works_head h3 {
+  margin: 0;
+  font: 600 clamp(1.2rem, 2.4vw, 1.7rem)/1.2 'Archivo', sans-serif;
+  letter-spacing: .02em;
+}
+.works_head .count {
+  font: 500 12px/1 'JetBrains Mono', monospace;
+  color: var(--brand-500); letter-spacing: .18em;
+}
+.works_head .hint {
+  margin-left: auto;
+  font: 400 11px/1.5 'JetBrains Mono', monospace;
+  color: rgba(255,255,255,.38); letter-spacing: .08em;
+}
+
+/* ---- 视频作品卡片 ---- */
+.works_videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(430px, 100%), 1fr));
+  gap: clamp(1.2rem, 3vw, 2.2rem);
+}
+.vcard {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0b0b0d;
+  transition: border-color .35s, transform .35s cubic-bezier(.16,1,.3,1);
+}
+.vcard:hover { border-color: var(--accent-line); transform: translateY(-3px); }
+.vcard_media { position: relative; display: block; background: #000; cursor: pointer; }
+.vcard_video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; object-fit: cover;
+  filter: saturate(.82) brightness(.92); transition: filter .45s, transform .6s cubic-bezier(.16,1,.3,1); }
+.vcard:hover .vcard_video { filter: saturate(1.05) brightness(1.04); transform: scale(1.035); }
+
+/* 播放徽标：常态小而暗，悬停放大发光 */
+.vcard_play, .proj_play {
+  position: absolute; left: 50%; top: 50%; z-index: 2;
+  width: 56px; height: 56px; margin: -28px 0 0 -28px;
+  border: 1px solid rgba(255,184,0,.5); border-radius: 50%;
+  background: rgba(0,0,0,.42);
+  display: grid; place-items: center; pointer-events: none;
+  transition: transform .4s cubic-bezier(.16,1,.3,1), background .4s, border-color .4s, box-shadow .4s;
+}
+.vcard_play::after, .proj_play::after {
+  content: ""; margin-left: 4px;
+  border-left: 13px solid var(--brand-500);
+  border-top: 8px solid transparent; border-bottom: 8px solid transparent;
+  transition: border-left-color .3s;
+}
+.vcard:hover .vcard_play, .proj_card:hover .proj_play {
+  transform: scale(1.14); background: rgba(20,12,0,.66);
+  border-color: var(--brand-500);
+  box-shadow: 0 0 34px -4px rgba(255,184,0,.5);
+}
+/* 悬停预览时不遮挡：徽标淡出 */
+.vcard_media:hover .vcard_play { opacity: .35; }
+.vcard.is--playing .vcard_play::after {
+  margin-left: 0; width: 12px; height: 12px; border: none;
+  background: var(--brand-500); border-radius: 2px;
+  box-shadow: 6px 0 0 var(--brand-500);
+}
+.vcard_dur {
+  position: absolute; right: .6rem; bottom: .6rem; z-index: 2;
+  font: 500 10px/1 'JetBrains Mono', monospace; letter-spacing: .1em;
+  color: #fff; background: rgba(0,0,0,.55); padding: .3rem .45rem; border-radius: 3px;
+  opacity: 0; transition: opacity .35s;
+}
+.vcard:hover .vcard_dur { opacity: 1; }
+
+.vcard_meta {
+  display: flex; align-items: center; gap: .8rem;
+  padding: .85rem 1.1rem;
+  border-top: 1px solid var(--line-soft);
+}
+.vcard_idx {
+  font: 500 11px/1 'JetBrains Mono', monospace;
+  color: var(--brand-500); letter-spacing: .14em;
+}
+.vcard_title {
+  font: 600 14px/1.35 'Archivo', sans-serif; color: #fff; letter-spacing: .02em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.vcard_tag {
+  margin-left: auto; flex: none;
+  font: 400 10px/1 'JetBrains Mono', monospace;
+  color: rgba(255,255,255,.45); letter-spacing: .1em;
+  border: 1px solid var(--line); border-radius: 99px; padding: .38rem .7rem;
+}
+/* 播放中的卡片：琥珀亮边 */
+.vcard.is--playing { border-color: var(--brand-500); box-shadow: 0 0 0 1px rgba(255,184,0,.25), 0 12px 40px -18px rgba(255,184,0,.35); }
+
+/* ---- 图片作品：2:3 混排瀑布网格 ---- */
+.works_gallery {
+  columns: 3; column-gap: 1rem;
+}
+@media (max-width: 900px) { .works_gallery { columns: 2; } }
+@media (max-width: 560px) { .works_gallery { columns: 1; } }
+.gitem {
+  break-inside: avoid;
+  position: relative;
+  margin: 0 0 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  cursor: pointer;
+  opacity: 0; transform: translateY(26px);
+  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1),
+              border-color .3s;
+}
+.gitem.is-in { opacity: 1; transform: none; }
+.gitem:hover { border-color: var(--accent-line); }
+.gitem img {
+  display: block; width: 100%; height: auto;
+  filter: saturate(.82) contrast(1.04);
+  transition: filter .5s, transform .8s cubic-bezier(.16,1,.3,1);
+}
+.gitem:hover img { filter: saturate(1.05) contrast(1.02); transform: scale(1.025); }
+.gitem_ico {
+  position: absolute; left: 10px; top: 10px;
+  width: 26px; height: 26px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(10,8,4,.55);
+  border: 1px solid rgba(255,184,0,.4);
+  color: var(--brand-500);
+  font: 500 13px/1 'JetBrains Mono', monospace;
+  opacity: 0; transform: scale(.6);
+  transition: opacity .3s, transform .3s cubic-bezier(.16,1,.3,1);
+  pointer-events: none;
+}
+.gitem:hover .gitem_ico { opacity: 1; transform: none; }
+.gitem_cap {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 1.6rem .8rem .55rem;
+  background: linear-gradient(to top, rgba(0,0,0,.72), transparent);
+  font: 500 10px/1.4 'JetBrains Mono', monospace;
+  color: rgba(255,255,255,.85); letter-spacing: .14em;
+  opacity: 0; transition: opacity .3s;
+}
+.gitem:hover .gitem_cap { opacity: 1; }
+
+/* ---- 图片灯箱（独立于 Showreel 灯箱） ---- */
+.glightbox {
+  position: fixed; inset: 0; z-index: 900;
+  display: grid; place-items: center;
+  background: rgba(5,4,2,.92);
+  opacity: 0; pointer-events: none;
+  transition: opacity .35s;
+}
+.glightbox.is--open { opacity: 1; pointer-events: auto; }
+.glightbox_stage {
+  position: relative;
+  max-width: min(86vw, 1200px); max-height: 80vh;
+}
+.glightbox_stage img {
+  display: block;
+  max-width: 100%; max-height: 80vh;
+  border-radius: 6px;
+  border: 1px solid rgba(255,184,0,.28);
+  transform: scale(.96); opacity: 0;
+  transition: transform .4s cubic-bezier(.16,1,.3,1), opacity .3s;
+}
+.glightbox.is--open .glightbox_stage img { transform: none; opacity: 1; }
+.glightbox_bar {
+  position: absolute; left: 0; right: 0; bottom: max(3.5vh, 24px);
+  display: flex; align-items: center; justify-content: center; gap: 1.4rem;
+  font: 500 12px/1 'JetBrains Mono', monospace;
+  color: rgba(255,255,255,.7); letter-spacing: .12em;
+}
+.glightbox_btn {
+  appearance: none; background: none; border: 1px solid var(--line);
+  border-radius: 99px; color: rgba(255,255,255,.8);
+  font: 500 12px/1 'JetBrains Mono', monospace; letter-spacing: .1em;
+  padding: .6rem 1.1rem; cursor: pointer;
+  transition: border-color .3s, color .3s, background .3s;
+}
+.glightbox_btn:hover { border-color: var(--brand-500); color: var(--brand-500); }
+.glightbox_close {
+  position: absolute; top: max(3vh, 18px); right: max(3vw, 18px);
+}
+/* 左右点击热区 */
+.glightbox_nav {
+  position: absolute; top: 0; bottom: 0; width: 18vw;
+  background: none; border: 0; cursor: pointer; padding: 0;
+}
+.glightbox_nav.is--prev { left: 0; cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M19 5 10 15l9 10' stroke='%23ffb800' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") 15 15, w-resize; }
+.glightbox_nav.is--next { right: 0; cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M11 5l9 10-9 10' stroke='%23ffb800' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") 15 15, e-resize; }
+
+/* ============================================================
+   作品播放器 videobox — 点击视频案例进入，带声播放 + ← → 切换
+   ============================================================ */
+.videobox {
+  position: fixed; inset: 0; z-index: 820;
+  display: grid; place-items: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(4,4,5,.90);
+  opacity: 0; transition: opacity .38s cubic-bezier(.16,1,.3,1);
+}
+.videobox[hidden] { display: none; }
+.videobox.is--open { opacity: 1; }
+.videobox_frame {
+  width: min(1180px, 100%);
+  /* 变换完全由 CSS 变量驱动：入场归位 / 拖拽跟手 / 旋转甩出共用一套 */
+  transform: translate3d(var(--dx, 0px), var(--dy, 0px), 0)
+             rotate(var(--rot, 0deg)) scale(var(--sc, 1));
+  opacity: var(--op, 1);
+  transition: transform .52s cubic-bezier(.16, 1, .3, 1), opacity .45s;
+  will-change: transform;
+  touch-action: none;
+}
+.videobox_frame.is--dragging { transition: none; cursor: grabbing; }
+/* 旋转退出：画面带着角度飞出，遮罩稍后收 */
+.videobox.is--leaving { opacity: 0; transition: opacity .40s cubic-bezier(.4, 0, .7, .5) .07s; }
+.videobox.is--leaving .videobox_frame {
+  transition: transform .46s cubic-bezier(.36, .02, .62, .72), opacity .42s ease-in;
+}
+.videobox_stage {
+  position: relative; width: 100%; aspect-ratio: 16 / 9;
+  background: #000; border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+  box-shadow: 0 40px 120px -40px rgba(255,184,0,.18);
+}
+.videobox_vid { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
+.videobox_bar {
+  display: flex; align-items: center; gap: .9rem; margin-top: .9rem;
+  font: 400 11px/1.4 'JetBrains Mono', monospace; letter-spacing: .1em;
+  color: rgba(255,255,255,.5);
+}
+.videobox_idx { color: var(--brand-500); }
+.videobox_title {
+  font: 600 14px/1.3 'Archivo', sans-serif; color: #fff; letter-spacing: .02em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.videobox_hint { margin-left: auto; opacity: .6; }
+.videobox_btn {
+  font: 500 11px/1 'JetBrains Mono', monospace; letter-spacing: .12em;
+  color: rgba(255,255,255,.7); background: transparent; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 99px; padding: .55rem .8rem;
+  transition: color .3s, border-color .3s, background .3s;
+}
+.videobox_btn:hover { color: var(--brand-500); border-color: var(--brand-500); background: rgba(255,184,0,.07); }
+.videobox_btn.is--close { color: #150e00; background: var(--brand-500); border-color: var(--brand-500); }
+.videobox_btn.is--close:hover { background: #ffd066; color: #150e00; }
+@media (max-width: 640px) {
+  .videobox_hint { display: none; }
+  .videobox_title { font-size: 12px; }
+}
+
+/* 近作卡：可点击播放 */
+.proj_media { cursor: pointer; }
+.proj_play { opacity: 0; }
+.proj_card:hover .proj_play { opacity: 1; }
+.proj_card:hover .proj_play { transform: scale(1.1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .gitem { opacity: 1; transform: none; transition: none; }
+  .vcard, .gitem img, .glightbox, .glightbox_stage img { transition: none; }
+  .videobox, .videobox_frame, .vcard_video, .vcard_play, .proj_play { transition: none; }
+}
